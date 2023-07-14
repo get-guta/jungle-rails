@@ -11,6 +11,14 @@
 </head>
 <body>
 
+<% if current_user %>
+  <!-- Display content for logged-in users -->
+  Logged in as <%= current_user.email %>. <%= link_to "Log out", logout_path, method: :delete %>
+<% else %>
+  <!-- Display content for logged-out users -->
+  <%= link_to "Register", new_user_path %>
+  <%= link_to "Log in", login_path %>
+<% end %>
 
   <%= render 'layouts/top_nav' %>
 
