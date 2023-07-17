@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   get 'about/index'
   root to: 'products#index'
+  
+    get '/login', to: 'sessions#new'
+    post '/login', to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
+
+  
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
@@ -19,6 +25,10 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show]
     resources :categories
   end
+ 
+  resources :users, only: [:new, :create]
+
+  
 
  
   
